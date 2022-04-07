@@ -4,7 +4,7 @@
 
 void get_next(const char *str, const char **begin, const char **end)
 {
-	// je	suis
+	// I'm brahim
 	// brahim
 	//   ^<---
 	*begin = str;
