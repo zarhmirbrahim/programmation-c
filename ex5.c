@@ -2,51 +2,50 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define ATaille 50
-#define BTaille 50
+#define N 5
+#define M 50
 
 int main()
 {
-	char A[5][30], B[5][30], FUS[10][30];
+	char A[5][30], B[5][30], FUS[10][30], tmp[30];
+
+	// aaezeo eaza
+	puts("\nA:");
+	for (int i = 0; i < 5; i++)
+	{
+		fgets(A[i], 30, stdin);
+	}
+
+	puts("\nB:");
+	for (int i = 0; i < 5; i++)
+	{
+		fgets(B[i], 30, stdin);
+	}
+
+	for (int i = 0; i < N + M; i++)
+	{
+		strcpy(FUS[i], (i < N) ? A[i] : B[i - M]);
+	}
+
+	for (int i = 0; i < N + M; i++)
+	{
+		for (int j = i + 1; j < N + M; ++j)
+		{
+			if (strcmp(FUS[i], FUS[j]) > 0)
+			{
+				strcpy(tmp, FUS[i]);
+				strcpy(FUS[i], FUS[j]);
+				strcpy(FUS[j], tmp);
+			}
+		}
+	}
+
+	puts("\nFUS:");
+	for (int i = 0; i < N + M; i++)
+	{
+		fputs(FUS[i], stdout);
+	}
+
 	
-	puts("Entrez A");
-	for(int i=0;i<5;++i){
-		scanf("%s",A[i]);
-	}
-	puts("Entrez B");
-	for(int i=0;i<5;++i){
-		scanf("%s",B[i]);
-
-	}
-	for(int i=0;i<5;++i) {
-		strcpy(FUS[i],A[i]);
-	}
-	for(int i=5;i<10;++i){
-		strcpy(FUS[i],B[i-20]);
-	}
-	for(int i=0;i<10;++i){
-	printf("%s\n",FUS[i]);
-	}
-	
-
-	// strcpy(FUS, A);
-	// strcat(FUS, B);
-
-	//qsort(FUS, strlen(FUS), sizeof(char), &comparison);
-
-// 	int fus_size = strlen(FUS);
-// 	for (int i = 0; i < fus_size - 1; i++)
-// 	{
-// 		for (int j = i; j < fus_size; j++)
-// 		{
-// 			if (FUS[i] > FUS[j])
-// 			{
-// 				char tmp = FUS[i];
-// 				FUS[i] = FUS[j];
-// 				FUS[j] =tmp;
-// 			}
-// 		}
-// 	}
-// 	printf("%s",FUS);
-return 0;
- }
+	return 0;
+}
